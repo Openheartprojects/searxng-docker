@@ -9,3 +9,6 @@ ui:
   static_use_hash: true
 redis:
   url: redis://redis:6379/0
+  #added new 
+enable: true
+origins: “*”
