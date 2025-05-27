@@ -11,5 +11,5 @@ redis:
   url: redis://redis:6379/0
   #added new 
 cors:
-     enable: true
-     origins: “*”
+  enable: true
+  origins: “*”
