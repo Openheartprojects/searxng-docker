@@ -5,11 +5,11 @@ server:
   secret_key:  "86f8fffccd41879bb3115e25ba68da1ba0837c57080bc02a41c1bc9d1207fe99"   # change this!
   limiter: true  # can be disabled for a private instance
   image_proxy: true
+  cors:
+    enable: true
+    origins: "*"
 ui:
   static_use_hash: true
 redis:
   url: redis://redis:6379/0
   #added new 
-cors:
-  enable: true
-  origins: “*”
