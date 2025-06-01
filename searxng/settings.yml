@@ -15,3 +15,47 @@ ui:
 redis:
   url: redis://redis:6379/0
   #added new 
+format:
+  - html
+  - json
+  
+search:
+  safe_search: 1  # 0 = off, 1 = moderate, 2 = strict
+  language: "en"
+  default_engine: "google"  # Or "bing", "duckduckgo", etc.
+  autocomplete: "duckduckgo"  # Enable auto-suggestions
+  paging: true
+
+engines:
+  - name: google
+    engine: google
+    disabled: false
+    shortcut: g
+    api_key: ""
+    cx: ""
+
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    disabled: false
+
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wiki
+    disabled: false
+
+plugins:
+  - searx.plugins.https_rewrite
+  - searx.plugins.hostname_rewrite
+  - searx.plugins.self_info
+  - searx.plugins.tracker_url_remover
+  - searx.plugins.search_on_category_select
+  - searx.plugins.currencies
+
+# Branding / appearance
+branding:
+  name: "OpenSearchX"
+  slogan: "Private. Fast. Open Source."
+  footer: "Powered by SearXNG"
+  theme_args:
+    custom_css: ""
