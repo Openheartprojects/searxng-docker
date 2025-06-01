@@ -1,61 +1,17 @@
-# see https://docs.searxng.org/admin/settings/settings.html#settings-use-default-settings
 use_default_settings: true
-server:
-  # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
-  secret_key:  "86f8fffccd41879bb3115e25ba68da1ba0837c57080bc02a41c1bc9d1207fe99"   # change this!
-  limiter: true  # can be disabled for a private instance
-  image_proxy: true
-  cors:
-    enable: true
-    origins: "*"
-  preferred_method: "GET"
-  authentication: false
-ui:
-  static_use_hash: true
-redis:
-  url: redis://redis:6379/0
-  #added new 
-format:
-  - html
-  - json
-  
+
+general:
+  instance_name: 'searxng'
+
 search:
-  safe_search: 1  # 0 = off, 1 = moderate, 2 = strict
-  language: "en"
-  default_engine: "google"  # Or "bing", "duckduckgo", etc.
-  autocomplete: "duckduckgo"  # Enable auto-suggestions
-  paging: true
+  autocomplete: 'google'
+  formats:
+    - html
+    - json
+
+server:
+  secret_key: 'a2fb23f1b02e6ee83875b09826990de0f6bd908b6638e8c10277d415f6ab852b' # Is overwritten by ${SEARXNG_SECRET}
 
 engines:
-  - name: google
-    engine: google
+  - name: wolframalpha
     disabled: false
-    shortcut: g
-    api_key: ""
-    cx: ""
-
-  - name: duckduckgo
-    engine: duckduckgo
-    shortcut: ddg
-    disabled: false
-
-  - name: wikipedia
-    engine: wikipedia
-    shortcut: wiki
-    disabled: false
-
-plugins:
-  - searx.plugins.https_rewrite
-  - searx.plugins.hostname_rewrite
-  - searx.plugins.self_info
-  - searx.plugins.tracker_url_remover
-  - searx.plugins.search_on_category_select
-  - searx.plugins.currencies
-
-# Branding / appearance
-branding:
-  name: "OpenSearchX"
-  slogan: "Private. Fast. Open Source."
-  footer: "Powered by SearXNG"
-  theme_args:
-    custom_css: ""
